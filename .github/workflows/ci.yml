@@ -87,7 +87,7 @@ jobs:
           git clone --single-branch --depth 1 --branch v12_0 https://github.com/steveicarus/iverilog.git .
           sh autoconf.sh
           ./configure --prefix ${{ github.workspace }}/local
-          make
+          make -j$(nproc)
           make install
 
       - name: Install LLVM
@@ -118,4 +118,5 @@ jobs:
       - name: Run tests
         run: |
           cd openasip
+          which iverilog || echo "IVERILOG NOT FOUND"
           ./tools/scripts/compiletest.sh -c
