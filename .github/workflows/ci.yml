@@ -84,7 +84,7 @@ jobs:
         run: |
           mkdir -p ${{ github.workspace }}/iverilog
           cd ${{ github.workspace }}/iverilog
-          git clone --single-branch --depth 1 --branch v12_0 https://github.com/steveicarus/iverilog.git
+          git clone --single-branch --depth 1 --branch v12_0 https://github.com/steveicarus/iverilog.git .
           sh autoconf.sh
           ./configure
           make
