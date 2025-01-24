@@ -86,7 +86,7 @@ jobs:
           cd ${{ github.workspace }}/iverilog
           git clone --single-branch --depth 1 --branch v12_0 https://github.com/steveicarus/iverilog.git .
           sh autoconf.sh
-          ./configure
+          ./configure --prefix ${{ github.workspace }}/local
           make
           make install
 
