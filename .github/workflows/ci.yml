@@ -26,6 +26,7 @@ jobs:
           echo "LD_LIBRARY_PATH=$LD_LIBRARY_PATH:${{ github.workspace }}/local/lib" >> $GITHUB_ENV
           echo "PATH=${{ github.workspace }}/local/bin:$PATH" >> $GITHUB_ENV
           echo "LDFLAGS=-L${{ github.workspace }}/local/lib" >> $GITHUB_ENV
+          echo "PATH=${{ github.workspace }}/iverilog/installation/bin:$PATH" >> $GITHUB_ENV
 
           ## TMPDIR
           TMPDIR=$HOME/tmp
@@ -86,7 +87,7 @@ jobs:
           cd ${{ github.workspace }}/iverilog
           git clone --single-branch --depth 1 --branch v12_0 https://github.com/steveicarus/iverilog.git .
           sh autoconf.sh
-          ./configure --prefix ${{ github.workspace }}/local
+          ./configure --prefix ${{ github.workspace }}/iverilog/installation
           make -j$(nproc)
           make install
 
